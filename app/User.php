@@ -36,4 +36,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relasi One to Many User -> Tweet
+     * params 1: arah relasi model
+     * params 2: field yg menjadi foreign key
+     * params 3: primary key di model tujuan
+     */
+    public function tweets()
+    {
+        return $this->hasMany(Tweet::class, 'user_id', 'id');
+    }
 }
