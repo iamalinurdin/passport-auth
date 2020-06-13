@@ -18,4 +18,9 @@ class Tweet extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function scopeLatestFirst($query)
+    {
+        return $query->orderBy('created_at', 'DESC');
+    }
 }
